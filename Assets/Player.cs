@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour {
 
+    [Header("Movement Controls")]
     [SerializeField] float xSpeed = 10f;
     [SerializeField] float xRange = 6f;
     [SerializeField] float ySpeed = 10f;
@@ -20,17 +21,32 @@ public class Player : MonoBehaviour {
 
     //Multiplied against horizontal input to get ship to roll during movement
     [SerializeField] float controlYawFactor = -50f;
+    
+    [Header("Death Handler")]
+    [SerializeField] float deathTimer = 2f;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update ()
+    [SerializeField] GameObject explosionFX;
+
+    [SerializeField] SceneLoader sceneLoader;
+
+    private bool controlsEnabled = true;
+
+    private void Awake()
     {
-        ProcessTranslation();
-        ProcessRotation();
+        if (!sceneLoader)
+        {
+            sceneLoader = FindObjectOfType<SceneLoader>();
+        }
+    }
+
+    // Update is called once per frame
+    void Update ()
+    {
+        if (controlsEnabled)
+        {
+            ProcessTranslation();
+            ProcessRotation();
+        }        
     }
 
     private void ProcessTranslation()
@@ -50,6 +66,18 @@ public class Player : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Collision Detected With " + other.name);
+        if (controlsEnabled)
+        {
+            Debug.Log("Collision Detected With " + other.name);
+            StartCoroutine(ProcessDeath());
+            controlsEnabled = false;
+        }        
+    }
+
+    IEnumerator ProcessDeath()
+    {
+        explosionFX.SetActive(true);
+        yield return new WaitForSeconds(deathTimer);
+        sceneLoader.RestartScene();
     }
 }

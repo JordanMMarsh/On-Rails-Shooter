@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33506377053754082}
   - component: {fileID: 23781541653955460}
   - component: {fileID: 65424593239946870}
+  - component: {fileID: 114029431923211152}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -36,8 +37,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1419031063204724}
   m_LocalRotation: {x: 0.064964905, y: -0.80994415, z: -0.57396257, w: -0.10167056}
-  m_LocalPosition: {x: -16.777058, y: 101.11147, z: 39.992752}
-  m_LocalScale: {x: 10, y: 10, z: 10}
+  m_LocalPosition: {x: 3.240634, y: 117.90192, z: 94.98687}
+  m_LocalScale: {x: 30, y: 30, z: 10}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -96,3 +97,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.6627083, y: 0.48463187, z: 0.14032467}
   m_Center: {x: 0.0000019073486, y: 0.0000038146973, z: 0.000000949949}
+--- !u!114 &114029431923211152
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1419031063204724}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac26b4d25e612d84381838bfd38d8f2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explosionTime: 2
+  pointsPerEnemy: 10
+  explosionFX: {fileID: 1413608850853254, guid: 6726feac642bc7b43abd63df873fecaf,
+    type: 2}
+  gameManager: {fileID: 0}

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: ac26b4d25e612d84381838bfd38d8f2b
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - explosionFX: {fileID: 1413608850853254, guid: 6726feac642bc7b43abd63df873fecaf,
+      type: 2}
+  - gameManager: {fileID: 114035524828805286, guid: 1684c6f6c91d02b4bab16f6ce79c0adf,
+      type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
