@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour {
 
+    [SerializeField] float hitpoints = 100f;
     [SerializeField] float explosionTime = 2f;
     [SerializeField] float pointsPerEnemy = 10f;
     [SerializeField] GameObject explosionFX;
@@ -21,10 +22,15 @@ public class Enemy : MonoBehaviour {
     {
         if (other.gameObject.tag == "Bullets")
         {
-            gameManager.AddScore(pointsPerEnemy);
-            var explosion = Instantiate(explosionFX, transform.position, Quaternion.identity);
-            Destroy(explosion, explosionTime);
-            Destroy(gameObject);
+            hitpoints -= 10f;
+            Debug.Log(gameObject.name + " has " + hitpoints + " health.");
+            if (hitpoints <= 0)
+            {
+                gameManager.AddScore(pointsPerEnemy);
+                var explosion = Instantiate(explosionFX, transform.position, Quaternion.identity);
+                Destroy(explosion, explosionTime);
+                Destroy(gameObject);
+            }        
         }
     }
 }

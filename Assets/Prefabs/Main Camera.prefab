@@ -59,10 +59,9 @@ GameObject:
   - component: {fileID: 4244765842460234}
   - component: {fileID: 198141788184015262}
   - component: {fileID: 199729154187652096}
-  - component: {fileID: 65820619293759524}
   m_Layer: 0
-  m_Name: Bullets 2
-  m_TagString: Untagged
+  m_Name: Bullets Left
+  m_TagString: Bullets
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -77,10 +76,10 @@ GameObject:
   - component: {fileID: 4066438304982058}
   - component: {fileID: 198143440990163310}
   - component: {fileID: 199076465788462642}
-  - component: {fileID: 65680095879688578}
+  - component: {fileID: 114846129266851740}
   m_Layer: 0
-  m_Name: Bullets
-  m_TagString: Untagged
+  m_Name: Bullets Right
+  m_TagString: Bullets
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -282,30 +281,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 4.0626006, y: 0.9683189, z: 3.3060265}
   m_Center: {x: -0.000015497208, y: -0.000007882714, z: 0.000030457973}
---- !u!65 &65680095879688578
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1891203709053520}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.4370731, y: 1.4369608, z: 286.42007}
-  m_Center: {x: -0.0005090907, y: 0.0008876025, z: 148.49983}
---- !u!65 &65820619293759524
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1817426147135966}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.4356503, y: 1.4388894, z: 295.42007}
-  m_Center: {x: -0.0013751388, y: 0.000051558014, z: 152.99995}
 --- !u!81 &81811394703857774
 AudioListener:
   m_ObjectHideFlags: 1
@@ -438,6 +413,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 252344a5a90aaa5408680c9d1ee5ba04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  guns:
+  - {fileID: 1891203709053520}
+  - {fileID: 1817426147135966}
   xSpeed: 10
   xRange: 6
   ySpeed: 10
@@ -449,6 +427,18 @@ MonoBehaviour:
   deathTimer: 2
   explosionFX: {fileID: 1980212346866186}
   sceneLoader: {fileID: 0}
+--- !u!114 &114846129266851740
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1891203709053520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd3e55f6b6ea3dc48b1fee942e34f0bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damagePerShot: 10
 --- !u!198 &198141788184015262
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -3849,9 +3839,9 @@ ParticleSystem:
         m_NumAlphaKeys: 2
     range: {x: 0, y: 1}
   CollisionModule:
-    enabled: 0
+    enabled: 1
     serializedVersion: 3
-    type: 0
+    type: 1
     collisionMode: 0
     colliderForce: 0
     multiplyColliderForceByParticleSize: 0
@@ -4022,7 +4012,7 @@ ParticleSystem:
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
-    minKillSpeed: 0
+    minKillSpeed: 1000
     maxKillSpeed: 10000
     radiusScale: 1
     collidesWith:
@@ -4031,7 +4021,7 @@ ParticleSystem:
     maxCollisionShapes: 256
     quality: 0
     voxelSize: 0.5
-    collisionMessages: 0
+    collisionMessages: 1
     collidesWithDynamic: 1
     interiorCollisions: 0
   TriggerModule:
@@ -8382,9 +8372,9 @@ ParticleSystem:
         m_NumAlphaKeys: 2
     range: {x: 0, y: 1}
   CollisionModule:
-    enabled: 0
+    enabled: 1
     serializedVersion: 3
-    type: 0
+    type: 1
     collisionMode: 0
     colliderForce: 0
     multiplyColliderForceByParticleSize: 0
@@ -8555,7 +8545,7 @@ ParticleSystem:
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
-    minKillSpeed: 0
+    minKillSpeed: 1000
     maxKillSpeed: 10000
     radiusScale: 1
     collidesWith:
@@ -8564,7 +8554,7 @@ ParticleSystem:
     maxCollisionShapes: 256
     quality: 0
     voxelSize: 0.5
-    collisionMessages: 0
+    collisionMessages: 1
     collidesWithDynamic: 1
     interiorCollisions: 0
   TriggerModule:

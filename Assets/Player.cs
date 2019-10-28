@@ -1,8 +1,11 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour {
+
+    [SerializeField] GameObject[] guns;
 
     [Header("Movement Controls")]
     [SerializeField] float xSpeed = 10f;
@@ -46,7 +49,26 @@ public class Player : MonoBehaviour {
         {
             ProcessTranslation();
             ProcessRotation();
+            ProcessShooting();
         }        
+    }
+
+    private void ProcessShooting()
+    {
+        if (Input.GetButton("Fire1"))
+        {
+            foreach (GameObject gun in guns)
+            {
+                gun.SetActive(true);
+            }
+        }
+        else
+        {
+            foreach (GameObject gun in guns)
+            {
+                gun.SetActive(false);
+            }
+        }
     }
 
     private void ProcessTranslation()
